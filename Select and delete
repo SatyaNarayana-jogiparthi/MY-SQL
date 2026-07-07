@@ -38,3 +38,9 @@ end as status
 from student;
 
 select name,if(mark >50,"pass","fail") as result from student;
+
+#delete 
+
+delete from student where name ="sudharsan";
+delete from student where sno in (2,4,5);
+delete from student;
