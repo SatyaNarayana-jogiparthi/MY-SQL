@@ -1,0 +1,93 @@
+#normal
+create database wc;
+use wc;
+create table india ( sno int, name varchar(10),age int);
+insert into india values(1,"rohit",38);
+insert into india values(2,"virat",40);
+insert into india values(1,"dhoni",42);
+select * from india;
+
+#auto increment
+create table aus( sno int auto_increment primary key , name varchar(10),age int);
+insert into aus values(1,"smith",38);
+insert into aus values(2,"warner",40);
+insert into aus values(3,"wood",42);
+select * from aus;
+
+create table wi (sno int auto_increment primary key,name varchar(10));
+insert into wi(name) values("pollard");
+insert into wi(name) values("bravo");
+insert into wi(name) values("russel");
+select * from wi;
+
+#copy from another table
+create table batter select * from wi where name="bravo";
+select * from batter; 
+
+#copy structure
+create table indiaA select * from india;
+select * from indiaA;
+
+#enum 
+create table batsmans (sno int, name varchar(10), gen enum("male","female"));
+insert into batsmans values(1,"surya","male");
+insert into batsmans values(2,"iyer","male");
+insert into batsmans values(3,"vanshi","male");
+insert into batsmans values(4,"jemima","female");
+select *  from batsmans;
+
+#default
+create table bowlers (sno int,name varchar(10) default  'malinga' );
+insert into bowlers(sno,name) values(1,"bumhra");
+insert into bowlers(sno,name) values(2,"ashwin");
+insert into bowlers(sno)values (3);
+select * from bowlers;
+
+#unique
+create table nz(name varchar(10) unique);
+insert into nz values("boult");
+insert into nz values("boul");
+select * from nz;
+
+#set
+create database tema;
+use tema;
+create table ind (sno int, roles  set("bat","bowl","all"));
+insert into ind values(1,"bat,bowl");
+select * from ind;
+
+
+#generated
+create table players (name varchar(15),t20 int,odi int,totalmatch int generated always as (t20 + odi));
+insert into players(name,t20,odi)values("rohit",120,50);
+insert into players(name,t20,odi)values("virat",300,20);
+select * from players;
+desc players; 
+show tables;
+
+#drop one and many table
+drop table india;
+drop table indiaa,nz;
+
+#truncate
+truncate table players;
+select * from players;
+drop table players;
+
+#drop all table
+drop database wc;
+
+#alter
+create table teams (sno int 
+
+#add one column
+alter table teams add name varchar(10);
+
+#add multiple column
+alter table teams add (firstname varchar(10),lastname varchar(10));
+desc teams;
+
+#modify the datatype
+alter table teams modify column name varchar(100);
+insert into teams values(1,"rohith gurunath sharma","rohit","sharma");
+select * from teams;
