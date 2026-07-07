@@ -1,0 +1,35 @@
+Table "Emp" contains columns 1. id, 2. name, 3.age, 4.salary,5. dept, 6.designation
+
+
+1) INSERT INTO Emp (id, name, age, salary, dept, designation) VALUES
+(31, 'Rohit', 26, 270000, 'Developer', 'Software Engineer'),
+(32, 'Aishwarya', 29, 480000, 'Finance', 'Financial Analyst'),
+(33, 'Vignesh', 24, 230000, 'Tester', 'Test Engineer'),
+(34, 'Harini', 22, 150000, 'HR', 'HR Executive'),
+(35, 'Sathish', 35, 780000, 'Developer', 'Senior Software Engineer'),
+(36, 'Janani', 31, 560000, 'Finance', 'Senior Accountant'),
+(37, 'Bharath', 45, 970000, 'Developer', 'Technical Architect'),
+(38, 'Revathi', 40, 890000, 'Finance', 'Finance Manager'),
+(39, 'Kiran', 27, 360000, 'Tester', 'QA Engineer'),
+(40, 'Anu', 38, 610000, 'HR', 'HR Manager'),
+(41, 'Dinesh', 23, 190000, 'Developer', 'Software Engineer'),
+(42, 'Preethi', 34, 520000, 'Finance', 'Financial Analyst'),
+(43, 'Saravanan', 30, 410000, 'Tester', 'QA Engineer'),
+(44, 'Gayathri', 25, 210000, 'HR', 'HR Executive'),
+(45, 'Arvind', 36, 810000, 'Developer', 'Senior Software Engineer'),
+(46, 'Sindhu', 33, 640000, 'Finance', 'Senior Accountant'),
+(47, 'Nitin', 43, 940000, 'Developer', 'Technical Architect'),
+(48, 'Latha', 41, 920000, 'Finance', 'Finance Manager'),
+(49, 'Vinod', 28, 390000, 'Tester', 'Test Engineer'),
+(50, 
+
+1) Print deparment name and their sum ( sum of salary of employess belong to particular dept) 
+2) Print names whose age is more than 30 and thier designation is HR manager
+3) Print how many employess with age less than 40 and salary greater than 5lakhs
+4) Print name, salary and city of those who are overall highly paid (first 10)
+5) print one top employe name alone in each and every designation( we have 8 different designation)
+6)Print the top 3 highest-paid employees in every department.
+7)Print the department whose total salary expense is the highest.
+8)Print the designation having the maximum number of employees.
+9)Print employees whose salary is greater than the salary of every HR employee.
+10)Print employees whose salary is between the average salary of their department and the overall company average salary.
