@@ -1,0 +1,18 @@
+use tema;
+create table students ( sno int,name varchar (20),mark int);
+insert into students values (1,"sudharsan",50);
+insert into students values (2,"rohit",34);
+insert into students values (3,"virat",78);
+insert into students values (4,"aj",90);
+insert into students values (5,"jd",94);
+insert into students values (6,"ravi",14);
+insert into students values (7,"sudharsan",59);
+select * from students;
+select name,mark from students;
+select * from students order by mark;
+select * from students order by mark desc;
+select * from students order by mark desc limit 2;
+select * from students order by mark limit 2;
+alter table  students add column dept varchar(10);
+update students set dept = ifnull(dept,"cse");
+select * from students order by dept,mark;
