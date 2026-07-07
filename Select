@@ -16,3 +16,25 @@ select * from student order by mark desc;
 select * from student order by mark desc limit 2;
 select * from student order by mark limit 2;
 select * from student order by dept,mark;
+
+#count
+select count(*) from student;
+select count(*) from student where mark > 50;
+
+#average
+select avg(mark) from student;
+select avg(mark) from student where dept = "cse";
+
+#group by
+select dept,count(*) from student group by dept;
+select dept,count(*) from student group by dept having count(*)>2;
+
+#multiple
+select name,case
+when mark>89 then "good"
+when mark>50 then "pass"
+else "fail"
+end as status 
+from student;
+
+select name,if(mark >50,"pass","fail") as result from student;
