@@ -13,6 +13,7 @@ insert into stu values(9,"ajay","cse", 91,"chennai");
 insert into stu values(10,"rizwan","ece", 39,"chennai");
 insert into stu values(11,"eshwar","eee", 45,"chennai");
 select * from stu;
+#2.all + if
 update stu set city = if(dept="cse","chennai","banglore");
 set sql_safe_updates=0;
 #3.many entries
@@ -28,3 +29,27 @@ when mark>60 then "B"
 when mark>40 then "P"
 else "F"
 end;
+#6.based on alphabet
+update stu set city = "padur" where name like"R%";
+#7.between
+update stu set dept ="ece" where mark between 40 and 60;
+#8.logical and 
+update stu set mark = if(city = "padur" and dept = "ece",100,0);
+#9.logical or
+update stu set mark = if(city = "padur" or dept = "cse",100,50);
+#10.inbuilt substring
+update stu set city = substring(city,1,3);
+#11.concat
+alter table stu add column fname varchar(10);
+alter table stu modify column fname varchar(30);
+update stu set fname = concat(name,"krish");
+#12.replace
+update stu set dept = replace(dept,"eee", "elect");
+#13.date add
+alter table stu add column dob date;
+update stu set dob = curdate();
+alter table stu add column jd date;
+update stu set jd = date_add(dob,interval 3 year);
+#14.if null
+update stu set mark = null where dept ="ece";
+update stu set mark = ifnull(mark,40);
