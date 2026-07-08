@@ -33,3 +33,89 @@ Table "Emp" contains columns 1. id, 2. name, 3.age, 4.salary,5. dept, 6.designat
 8)Print the designation having the maximum number of employees.
 9)Print employees whose salary is greater than the salary of every HR employee.
 10)Print employees whose salary is between the average salary of their department and the overall company average salary.
+
+
+
+
+
+
+
+
+
+-- 1. Print department name and total salary of employees in each department
+SELECT dept, SUM(salary) AS total_salary
+FROM Emp
+GROUP BY dept;
+
+-- 2. Print names whose age is more than 30 and designation is HR Manager
+SELECT name
+FROM Emp
+WHERE age > 30
+AND designation = 'HR Manager';
+
+-- 3. Print how many employees have age less than 40 and salary greater than 5 lakhs
+SELECT COUNT(*) AS total_employees
+FROM Emp
+WHERE age < 40
+AND salary > 500000;
+
+-- 4. Print top 10 highest-paid employees (name and salary)
+-- (City column is not available in your table)
+SELECT name, salary
+FROM Emp
+ORDER BY salary DESC
+LIMIT 10;
+
+-- 5. Print one top employee name in each designation
+SELECT name
+FROM (
+    SELECT name, designation, salary,
+           ROW_NUMBER() OVER(PARTITION BY designation ORDER BY salary DESC) AS rn
+    FROM Emp
+) t
+WHERE rn = 1;
+
+-- 6. Print the top 3 highest-paid employees in every department
+SELECT name, dept, salary
+FROM (
+    SELECT name, dept, salary,
+           ROW_NUMBER() OVER(PARTITION BY dept ORDER BY salary DESC) AS rn
+    FROM Emp
+) t
+WHERE rn <= 3;
+
+-- 7. Print the department whose total salary expense is the highest
+SELECT dept
+FROM Emp
+GROUP BY dept
+ORDER BY SUM(salary) DESC
+LIMIT 1;
+
+-- 8. Print the designation having the maximum number of employees
+SELECT designation
+FROM Emp
+GROUP BY designation
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+-- 9. Print employees whose salary is greater than the salary of every HR employee
+SELECT name, salary
+FROM Emp
+WHERE salary >
+(
+    SELECT MAX(salary)
+    FROM Emp
+    WHERE dept = 'HR'
+);
+
+-- 10. Print employees whose salary is between the average salary of their department and the overall company average salary
+SELECT e.name, e.salary, e.dept
+FROM Emp e
+JOIN (
+    SELECT dept, AVG(salary) AS dept_avg
+    FROM Emp
+    GROUP BY dept
+) d
+ON e.dept = d.dept
+WHERE e.salary BETWEEN d.dept_avg
+AND (SELECT AVG(salary) FROM Emp);
